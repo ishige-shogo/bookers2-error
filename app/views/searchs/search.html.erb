@@ -2,7 +2,7 @@
   <div class ="row">
       <table class="table">
         <% if @range == "1" %>
-          <h2>Users search for</h2>
+          <h2>Users search for "<%= @word %>"</h2>
           <thead>
             <tr>
               <th></th>
@@ -20,7 +20,7 @@
             <% end %>
           </tbody>
         <% else %>
-          <h2>Books search for</h2>
+          <h2>Books search for "<%= @word %>"</h2>
           <thead>
             <tr>
               <th></th>
