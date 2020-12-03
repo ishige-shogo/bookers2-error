@@ -2,6 +2,9 @@
   <div class ="row">
       <h2>Follower Users</h2>
       <table class="table">
+        <% if @user.follower_user.count == 0 %>
+            <thead><tr><th>ユーザーはいません</th></tr></thead>
+        <% else %>
         <thead>
           <tr>
             <th>image</th>
@@ -19,6 +22,7 @@
             </tr>
           <% end %>
         </tbody>
+        <% end %>
       </table>
 
 
