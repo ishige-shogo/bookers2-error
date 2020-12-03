@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
 
-  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
+  get 'follower/:id' => "relationships#follower", as: "follower"
+  get 'followed/:id' => "relationships#followed", as: "followed"
+
+  post 'follow/:id' => 'relationships#create', as: 'follow' # フォローする
+  post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow' # フォロー外す
 
 
   resources :users,only: [:show,:index,:edit,:update]
