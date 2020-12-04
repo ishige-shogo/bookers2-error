@@ -11,6 +11,8 @@ class Book < ApplicationRecord
 	validates :title, presence: true
 	validates :body, presence: true, length: {maximum: 200}
 
+
+  #検索機能
 	def self.search(search, word)
     if search == "perfect_match"
       @book = Book.where("title LIKE ?", "#{word}")
