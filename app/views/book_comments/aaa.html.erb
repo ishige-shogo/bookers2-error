@@ -1,0 +1,11 @@
+<% @books.each do |book| %>
+    <% if book.favo?(current_user) %>
+      <%= link_to favorites_path(post),method: :delete do %>
+        ♥<%= book.favorites.count %>
+      <% end %>
+    <% else %>
+      <%=link_to favorites_path(post), method: :post do %>
+        ♡<%= book.favorites.count %>
+      <% end %>
+    <% end %>
+<% end %>
