@@ -18,6 +18,11 @@ class User < ApplicationRecord
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true, presence: true
   validates :introduction, length: {maximum: 50}
+  
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+  
+  
 
     # ユーザーをフォローする
   def follow(user_id)

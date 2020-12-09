@@ -23,6 +23,17 @@
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "password_confirm" %>
         </div>
+        <h2>Your address</h2>
+          <p>zip code</p>
+          <%= f.text_field :postcode %>
+          <p>prefecture</p>
+          <%= f.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %><br>
+          <p>city</p>
+          <%= f.text_field :address_city %>
+          <p>street</p>
+          <%= f.text_field :address_street %>
+          <p>builbding name</p>
+          <%= f.text_field :address_building %>
         <div class="actions">
           <%= f.submit "Sign up" ,class: 'btn btn-sm btn-success' %>
         </div>
