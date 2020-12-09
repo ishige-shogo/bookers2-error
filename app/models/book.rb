@@ -20,10 +20,8 @@ class Book < ApplicationRecord
       @book = Book.where("title LIKE ?", "%#{word}%")
     elsif search == "forward_match"
       @book = Book.where("title LIKE ?", "#{word}_")
-    elsif search == "backward_match"
-      @book = Book.where("title LIKE ?", "_#{word}")
     else
-      @book = Book.all
+      @book = Book.where("title LIKE ?", "_#{word}")
     end
 	end
 end
