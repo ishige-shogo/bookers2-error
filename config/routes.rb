@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
+  get 'finds/find'
   get 'searchs/search'
-  devise_for :users
+
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
 
@@ -8,11 +10,23 @@ Rails.application.routes.draw do
   get 'followed/:id' => "relationships#followed", as: "followed"
 
   get 'search' => "searchs#search"
+  get 'find' => "finds#find"
 
   post 'follow/:id' => 'relationships#create', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow' # フォロー外す
 
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
 
+  resources :finds,only: [:index]
   resources :users,only: [:show,:index,:edit,:update]
   resources :books do
     resources :book_comments, only:[:create, :destroy]
