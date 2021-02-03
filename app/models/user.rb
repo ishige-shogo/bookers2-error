@@ -16,10 +16,7 @@ class User < ApplicationRecord
 
   attachment :profile_image, destroy: false
 
-  validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true, presence: true
-  validates :introduction, length: {maximum: 50}
-  validates :postcode, length: {maximum: 7, minimum: 7}, presence: true
-  validates :address_street, presence: true
+
 
   include JpPrefecture
   jp_prefecture :prefecture_code
